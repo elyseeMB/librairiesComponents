@@ -35,9 +35,6 @@ jobs:
 
       - name: Build Vite site
         run: yarn build
-        env:
-          # S'assurer que la base URL est correcte
-          VITE_BASE_URL: /librairiesComponents/
 
       - name: Build Storybook
         run: yarn build-storybook

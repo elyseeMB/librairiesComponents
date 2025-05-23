@@ -9,7 +9,7 @@ export function Presentation() {
     <div className="container">
       <div>
         <h1>Bienvenue sur la documentation UI</h1>
-        <a href="/storybook-static" target="_blank" rel="noopener noreferrer">
+        <a href="./storybook/" target="_blank" rel="noopener noreferrer">
           Ouvrir Storybook
         </a>
       </div>
