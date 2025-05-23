@@ -7,52 +7,70 @@ Une bibliothèque de composants UI construite avec **Vite** et **Storybook**, co
 ## 📦 Technologies
 
 - [Vite](https://vitejs.dev/) – pour un bundling ultra-rapide
+
 - [Storybook](https://storybook.js.org/) – pour documenter et visualiser les composants UI
+
 - [Yarn](https://yarnpkg.com/) – comme gestionnaire de paquets
+
 - [GitHub Pages](https://pages.github.com/) – pour héberger la démo et la documentation
 
 ---
 
 ## 🚀 Développement local
 
-1. **Cloner le dépôt**
+1.  **Cloner le dépôt**
 
-   ```bash
-   https://github.com/elyseeMB/librairiesComponents.git
-   cd librairiesComponents
-   ```
+```bash
 
-````
+git clone https://github.com/elyseeMB/librairiesComponents.git
 
-2. **Installer les dépendances**
+cd librairiesComponents
 
-   ```bash
-   yarn
-   ```
 
-3. **Démarrer le projet**
 
-   ```bash
-   yarn dev
-   ```
 
-4. **Lancer Storybook**
 
-   ```bash
-   yarn storybook
-   ```
+2.  **Installer les dépendances**
+
+
+
+yarn
+
+```
+
+3.  **Démarrer le projet**
+
+```bash
+
+yarn dev
+
+```
+
+4.  **Lancer Storybook**
+
+```bash
+
+yarn storybook
+
+```
 
 ---
 
 ## 🛠️ Scripts utiles
 
-| Script                 | Description                                          |
+| Script | Description |
+
 | ---------------------- | ---------------------------------------------------- |
-| `yarn dev`             | Lance l'application avec Vite                        |
-| `yarn storybook`       | Lance Storybook en mode développement                |
-| `yarn build`           | Génère le build Vite                                 |
+
+| `yarn dev` | Lance l'application avec Vite |
+
+| `yarn storybook` | Lance Storybook en mode développement |
+
+| `yarn build` | Génère le build Vite |
+
 | `yarn build-storybook` | Génère le build de Storybook dans `storybook-static` |
-| `yarn preview`         | Prévisualise le build Vite                           |
+
+| `yarn preview` | Prévisualise le build Vite |
 
 ---
 
@@ -60,31 +78,38 @@ Une bibliothèque de composants UI construite avec **Vite** et **Storybook**, co
 
 Le projet est déployé automatiquement sur GitHub Pages grâce à une GitHub Action.
 
-- 📄 Page principale : [`/`](https://https://elyseemb.github.io/librairiesComponents/)
-- 📘 Documentation Storybook : [`/storybook-static/`](https://https://elyseemb.github.io/librairiesComponents/storybook-static/)
+- 📄 Page principale : [https://elyseemb.github.io/librairiesComponents/](https://elyseemb.github.io/librairiesComponents/)
 
-> Assure-toi que les fichiers générés (`dist/` et `storybook-static/`) soient bien inclus dans l'action de déploiement.
+- 📘 Documentation Storybook : [https://elyseemb.github.io/librairiesComponents/storybook-static/](https://elyseemb.github.io/librairiesComponents/storybook-static/)
+
+> Assure-toi que les fichiers générés (`dist/` et `storybook-static/`) soient bien inclus dans l’action de déploiement.
 
 ---
 
 ## 📁 Structure du projet
 
 ```
-.
-├── .github/workflows/      # Actions GitHub pour le déploiement
-├── public/                 # Fichiers publics
-├── src/                    # Code source
-│   ├── css/                # Css UI
-│   ├── stories/            # stories UI
-│   ├── index.css/          # Main css UI
-│   ├── Presentation/       # Presentation UI
-│   └── main.tsx            # Entrée de l'application
-├── storybook/              # Config Storybook (si séparée)
-├── storybook-static/       # Généré par `yarn build-storybook`
-├── vite.config.ts          # Configuration Vite
+├── .github/workflows/  # Actions GitHub pour le déploiement
+
+├── public/  # Fichiers publics
+
+├── src/  # Code source
+
+│ ├──  css/  # CSS UI
+
+│ ├──  stories/  # Stories UI
+
+│ ├──  index.css  # CSS principal
+
+│ ├──  Presentation/  # Composants de présentation
+
+│ └──  main.tsx  # Entrée de l'application
+
+├── storybook/  # Config Storybook (si séparée)
+
+├── storybook-static/  # Généré par `yarn build-storybook`
+
+├── vite.config.ts  # Configuration Vite
+
 └── README.md
 ```
-
----
-
-````
