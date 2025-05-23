@@ -1,0 +1,13 @@
+button.with-icon {
+  display: flex;
+  align-items: center;
+  gap: var(--space);
+  color: var(--button-secondary-color);
+  background: var(--button-secondary);
+  box-shadow: var(--secondary-button-active);
+}
+
+button.with-icon:hover {
+  background: var(--button-secondary-hover);
+  color: var(--button-secondary-color-hover);
+}

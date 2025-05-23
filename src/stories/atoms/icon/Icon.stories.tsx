@@ -49,10 +49,10 @@ export const AllIcons: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-      <Icon name="Home" size={16} />
-      <Icon name="Home" size={24} />
-      <Icon name="Home" size={32} />
-      <Icon name="Home" size={48} />
+      <Icon name="HomeLine" size={16} />
+      <Icon name="HomeLine" size={24} />
+      <Icon name="HomeLine" size={32} />
+      <Icon name="HomeLine" size={48} />
     </div>
   ),
 };

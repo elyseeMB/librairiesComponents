@@ -1,0 +1,15 @@
+button.destructive {
+  color: var(--button-danger-color);
+  background: var(--button-danger);
+  box-shadow: var(--danger-button-active);
+}
+
+button.destructive:hover {
+  background: var(--red-500);
+}
+
+button.destructive:disabled {
+  color: var(--button-danger-color-disabled);
+  background: var(--button-danger-disabled);
+  box-shadow: var(--danger-button-disabled);
+}

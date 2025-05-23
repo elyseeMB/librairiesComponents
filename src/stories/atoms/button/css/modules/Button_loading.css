@@ -1,0 +1,19 @@
+button.loading {
+  display: flex;
+  align-items: center;
+  cursor: not-allowed;
+  gap: var(--space);
+  color: var(--button-secondary-color-disabled);
+  background: var(--button-secondary-disabled);
+  box-shadow: var(--secondary-button-disabled);
+}
+
+button.loading svg {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(1turn);
+  }
+}

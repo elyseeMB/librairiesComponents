@@ -1,0 +1,14 @@
+button.ghost {
+  background: none;
+  color: var(--button-secondary-color);
+}
+
+button.ghost:hover {
+  background: var(--button-secondary-hover);
+  color: var(--button-secondary-color-hover);
+}
+
+button.ghost:disabled {
+  background: var(--button-ghost-disabled);
+  color: var(--button-ghost-color-disabled);
+}

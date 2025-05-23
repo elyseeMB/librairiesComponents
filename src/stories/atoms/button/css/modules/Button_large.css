@@ -1,0 +1,9 @@
+button.large {
+  --padding-base: 0.4rem 0.8rem;
+  --rounded: 0.6rem;
+  --height: calc(3 * var(--size));
+  font-size: var(--large);
+  height: var(--height);
+  padding: var(--padding-base);
+  border-radius: var(--rounded);
+}

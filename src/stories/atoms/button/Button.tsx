@@ -1,11 +1,6 @@
 import type React from "react";
 import styles from "./Button.module.css";
-import type {
-  ButtonHTMLAttributes,
-  JSX,
-  PropsWithChildren,
-  ReactNode,
-} from "react";
+import type { ButtonHTMLAttributes, PropsWithChildren, ReactNode } from "react";
 import { classNames } from "../../../utils/dom.ts";
 
 export const buttonVariants = [
@@ -52,6 +47,7 @@ export function Button({
   const sizeClass = styles[size] ?? "";
   return (
     <button
+      disabled={variant === "loading"}
       onClick={onClick}
       className={classNames(styles.button, variantClass, sizeClass, className)}
       {...props}

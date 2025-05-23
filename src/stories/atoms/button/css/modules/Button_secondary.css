@@ -1,0 +1,16 @@
+button.secondary {
+  color: var(--button-secondary-color);
+  background: var(--button-secondary);
+  box-shadow: var(--secondary-button-active);
+}
+
+button.secondary:hover {
+  background: var(--button-secondary-hover);
+  color: var(--button-secondary-color-hover);
+}
+
+button.secondary:disabled {
+  color: var(--button-secondary-color-disabled);
+  background: var(--button-secondary-disabled);
+  box-shadow: var(--secondary-button-disabled);
+}

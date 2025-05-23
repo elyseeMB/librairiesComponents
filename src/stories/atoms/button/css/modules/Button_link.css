@@ -1,0 +1,39 @@
+button.link {
+  position: relative;
+  color: var(--button-secondary-color);
+  background: var(--button-link);
+  color: var(--button-link-color);
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  padding-inline: 0;
+  padding-block: 0.2rem;
+}
+
+button.link:disabled {
+  color: var(--button-link-color-disabled);
+}
+
+button.link:hover {
+  background: var(--button-link-hover);
+  color: var(--button-link-color-hover);
+}
+
+Button.link:hover::after {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 1.3px;
+  background: currentColor;
+}
+
+Button.link:disabled::after {
+  position: absolute;
+  display: none;
+  color: var(--button-link-color-disabled);
+  content: "";
+  width: 100%;
+  height: 1.3px;
+  background: transparent;
+}

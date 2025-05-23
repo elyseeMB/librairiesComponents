@@ -1,3 +1,15 @@
+/* MODULES */
+@import "./css/modules/Button_destructive.css";
+@import "./css/modules/Button_small.css";
+@import "./css/modules/Button_large.css";
+@import "./css/modules/Button_primary.css";
+@import "./css/modules/Button_secondary.css";
+@import "./css/modules/Button_outline.css";
+@import "./css/modules/Button_ghost.css";
+@import "./css/modules/Button_link.css";
+@import "./css/modules/Button_with_icon.css";
+@import "./css/modules/Button_loading.css";
+
 body[data-theme="dark"],
 button,
 html.dark {
@@ -109,46 +121,10 @@ button {
   line-height: var(--line-height);
   font-weight: 500;
   background-blend-mode: color-burn, normal;
+  transition: all 0.35s;
   border: none;
 }
 
-button.secondary {
-  color: var(--button-secondary-color);
-  background: var(--button-secondary);
-  box-shadow: var(--secondary-button-active);
-}
-
-button.secondary:hover {
-  background: var(--button-secondary-hover);
-  color: var(--button-secondary-color-hover);
-}
-
-button.primary {
-  color: var(--button-primary-color);
-  background: var(--button-primary);
-  box-shadow: var(--primary-button-active);
-}
-
-button.primary:hover {
-  background: var(--button-primary-hover);
-  color: var(--button-primary-color-hover);
-}
-
-button.large {
-  --padding-base: 0.4rem 0.8rem;
-  --rounded: 0.6rem;
-  --height: calc(3 * var(--size));
-  font-size: var(--large);
-  height: var(--height);
-  padding: var(--padding-base);
-  border-radius: var(--rounded);
-}
-
-button.small {
-  --padding-base: 0.2rem 0.4rem;
-  --height: calc(2 * var(--size));
-  font-size: var(--small);
-  height: var(--height);
-  padding: var(--padding-base);
-  border-radius: var(--rounded);
+button[disabled] {
+  cursor: not-allowed;
 }

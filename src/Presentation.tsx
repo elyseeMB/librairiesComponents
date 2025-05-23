@@ -19,6 +19,28 @@ export function Presentation() {
           <div className="hstack">
             <Button variant="primary" children={label.button} />
             <Button variant="secondary" children={label.button} />
+            <Button variant="destructive" children={label.button} />
+            <Button variant="outline" children={label.button} />
+            <Button variant="ghost" children={label.button} />
+            <Button variant="link" children={label.button} />
+            <Button icon={<Icon name="ArrowRightLine" />} />
+            <Button
+              variant="with-icon"
+              children={label.button}
+              icon={<Icon name="MailLine" />}
+            />
+            <Button
+              variant="loading"
+              children={label.button}
+              icon={<Icon name="SpinnerLine" />}
+            />
+          </div>
+          <div className="hstack">
+            <Button disabled variant="primary" children={label.button} />
+            <Button disabled variant="secondary" children={label.button} />
+            <Button disabled variant="destructive" children={label.button} />
+            <Button disabled variant="ghost" children={label.button} />
+            <Button disabled variant="link" children={label.button} />
           </div>
           <div className="hstack">
             <Button size="large" children={label.button} />
@@ -28,9 +50,6 @@ export function Presentation() {
           </div>
           <div className="hstack">
             <Button size="small" children={label.button} />
-          </div>
-          <div className="hstack">
-            <Button size="small" icon={<Icon name="ArrowRightLine" />} />
           </div>
         </div>
       </div>

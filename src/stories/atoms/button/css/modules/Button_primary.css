@@ -1,0 +1,16 @@
+button.primary {
+  color: var(--button-primary-color);
+  background: var(--button-primary);
+  box-shadow: var(--primary-button-active);
+}
+
+button.primary:hover {
+  background: var(--button-primary-hover);
+  color: var(--button-primary-color-hover);
+}
+
+button.primary:disabled {
+  color: var(--button-primary-color-disabled);
+  background: var(--button-primary-disabled);
+  box-shadow: var(--primary-button-disabled);
+}

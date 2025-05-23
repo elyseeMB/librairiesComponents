@@ -1,3 +1,4 @@
+import styles from "./Icon.module.css";
 export const IconName = [
   "ArrowRightLine",
   "ArrowDropLeftLine",
@@ -5,6 +6,7 @@ export const IconName = [
   "ArrowDropDownLine",
   "HomeLine",
   "MailLine",
+  "SpinnerLine",
 ] as const;
 
 export type PropsIconName = (typeof IconName)[number];
@@ -17,6 +19,7 @@ type IconProps = {
 export function Icon({ name = "ArrowRightLine", size = 20 }: IconProps) {
   return (
     <svg
+      style={styles}
       width={size}
       height={size}
       viewBox="0 0 24 24"
@@ -53,6 +56,10 @@ export function IconSymbols() {
 
       <symbol id="MailLine">
         <path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z"></path>
+      </symbol>
+
+      <symbol id="SpinnerLine">
+        <path d="M18.364 5.63604L16.9497 7.05025C15.683 5.7835 13.933 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12H21C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C14.4853 3 16.7353 4.00736 18.364 5.63604Z"></path>
       </symbol>
     </svg>
   );

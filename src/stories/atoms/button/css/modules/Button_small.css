@@ -1,0 +1,8 @@
+button.small {
+  --padding-base: 0.2rem 0.4rem;
+  --height: calc(2 * var(--size));
+  font-size: var(--small);
+  height: var(--height);
+  padding: var(--padding-base);
+  border-radius: var(--rounded);
+}

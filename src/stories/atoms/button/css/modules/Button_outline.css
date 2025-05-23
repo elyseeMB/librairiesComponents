@@ -1,0 +1,9 @@
+button.outline {
+  background: none;
+  color: var(--button-secondary-color);
+  box-shadow: var(--secondary-button-active);
+}
+
+button.outline:hover {
+  color: var(--button-secondary-color-hover);
+}
