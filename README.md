@@ -85,5 +85,6 @@ Le projet est déployé automatiquement sur GitHub Pages grâce à une GitHub Ac
 └── README.md
 ```
 
+---
 
 ````
