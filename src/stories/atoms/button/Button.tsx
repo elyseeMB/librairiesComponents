@@ -1,6 +1,11 @@
 import type React from "react";
 import styles from "./Button.module.css";
-import type { ButtonHTMLAttributes, JSX, PropsWithChildren } from "react";
+import type {
+  ButtonHTMLAttributes,
+  JSX,
+  PropsWithChildren,
+  ReactNode,
+} from "react";
 import { classNames } from "../../../utils/dom.ts";
 
 export const buttonVariants = [
@@ -28,7 +33,7 @@ type ButtonProps = PropsWithChildren<
   variant?: ButtonVariant;
   size?: SizeProps;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  icon?: (...arg: any) => JSX.Element;
+  icon?: ReactNode;
 };
 
 export function Button({
@@ -51,7 +56,7 @@ export function Button({
       className={classNames(styles.button, variantClass, sizeClass, className)}
       {...props}
     >
-      {IconElement && <IconElement />}
+      {IconElement && <>{IconElement}</>}
       {children}
     </button>
   );

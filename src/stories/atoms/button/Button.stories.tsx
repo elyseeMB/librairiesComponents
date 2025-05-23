@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, buttonVariants } from "./Button";
+import { Button, buttonVariants } from "./Button.tsx";
+import { Icon as IconElement, IconName, IconSymbols } from "../icon/Icon.tsx";
 
 const meta = {
   title: "Atoms/Button",
@@ -9,9 +10,16 @@ const meta = {
     layout: "centered",
   },
 
-  // tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <>
+        <IconSymbols />
+        <Story />
+      </>
+    ),
+  ],
   argTypes: {
-    variant: { control: "select", options: buttonVariants },
+    variant: { control: "select", options: IconName },
   },
 
   //   args: { onClick: fn() },
@@ -20,7 +28,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
     children: "Button +",
@@ -46,5 +53,11 @@ export const Small: Story = {
   args: {
     children: "Button +",
     size: "small",
+  },
+};
+
+export const Icon: Story = {
+  args: {
+    icon: <IconElement name="ArrowRightLine" />,
   },
 };

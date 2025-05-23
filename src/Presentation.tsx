@@ -1,4 +1,5 @@
 import { Button } from "./stories/atoms/button/Button.tsx";
+import { Icon } from "./stories/atoms/icon/Icon.tsx";
 
 const label = {
   button: "Default +",
@@ -27,6 +28,9 @@ export function Presentation() {
           </div>
           <div className="hstack">
             <Button size="small" children={label.button} />
+          </div>
+          <div className="hstack">
+            <Button size="small" icon={<Icon name="ArrowRightLine" />} />
           </div>
         </div>
       </div>
