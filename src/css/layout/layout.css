@@ -1,0 +1,14 @@
+:root {
+  --space: 8px;
+  --container-width: 1200px;
+  --container-padding: 1rem;
+}
+
+.container > * {
+  box-sizing: border-box;
+  max-width: min(
+    var(--container-width),
+    calc(100% - 2 * var(--container-padding))
+  );
+  margin-inline: auto;
+}
