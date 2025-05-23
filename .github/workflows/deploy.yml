@@ -28,8 +28,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          # Supprimer le cache yarn car il est incompatible avec Yarn v4
-          # cache: yarn
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
@@ -37,14 +35,17 @@ jobs:
 
       - name: Build Vite site
         run: yarn build
+        env:
+          # S'assurer que la base URL est correcte
+          VITE_BASE_URL: /librairiesComponents/
 
       - name: Build Storybook
         run: yarn build-storybook
 
       - name: Copy Storybook to Vite dist
         run: |
-          mkdir -p dist/storybook-static
-          cp -r storybook-static/* dist/storybook-static
+          mkdir -p dist/storybook
+          cp -r storybook-static/* dist/storybook/
 
       - name: Add .nojekyll
         run: touch dist/.nojekyll
