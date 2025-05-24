@@ -1,5 +1,5 @@
 import { Button } from "./stories/atoms/button/Button.tsx";
-import { Icon } from "./stories/atoms/icon/Icon.tsx";
+import { Icon, IconSymbols } from "./stories/atoms/icon/Icon.tsx";
 import { Tooltip } from "./stories/molecules/Tooltip/Tooltip.tsx";
 import { Combobox } from "./stories/molecules/combobox/Combobox.tsx";
 
@@ -7,9 +7,19 @@ const label = {
   button: "Default +",
 };
 
+export function App() {
+  return (
+    <div className="page-wrapper">
+      <div className="container">
+        <Presentation />
+      </div>
+    </div>
+  );
+}
+
 export function Presentation() {
   return (
-    <div className="container">
+    <>
       <div>
         <h1>Bienvenue sur la documentation UI</h1>
         <a href="./storybook/" target="_blank" rel="noopener noreferrer">
@@ -62,6 +72,6 @@ export function Presentation() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
