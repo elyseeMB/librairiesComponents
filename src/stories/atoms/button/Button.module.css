@@ -114,6 +114,7 @@ body[data-theme="dark"] button.secondary {
 }
 
 button {
+  position: relative;
   cursor: pointer;
   padding: var(--padding-base);
   border-radius: var(--rounded);
@@ -122,7 +123,8 @@ button {
   line-height: var(--line-height);
   font-weight: 500;
   background-blend-mode: color-burn, normal;
-  transition: all 0.35s;
+  transition: 0.3s;
+  transition-property: box-shadow, color;
   border: none;
 }
 

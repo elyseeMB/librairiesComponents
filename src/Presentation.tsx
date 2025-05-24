@@ -1,5 +1,6 @@
 import { Button } from "./stories/atoms/button/Button.tsx";
 import { Icon } from "./stories/atoms/icon/Icon.tsx";
+import { Tooltip } from "./stories/molecules/Tooltip/Tooltip.tsx";
 import { Combobox } from "./stories/molecules/combobox/Combobox.tsx";
 
 const label = {
@@ -54,6 +55,10 @@ export function Presentation() {
           </div>
           <div className="hstack">
             <Combobox />
+          </div>
+          <div className="hstack">
+            <Tooltip message="t is a long established" />
+            <Tooltip message="t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)." />
           </div>
         </div>
       </div>

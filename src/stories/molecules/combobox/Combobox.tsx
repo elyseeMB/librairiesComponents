@@ -14,11 +14,11 @@ const options = [
 const ANIMATION_DURATION = 300; // ms
 
 export function Combobox() {
-  const [isOpen, setIsOpen] = useToggle(false);
+  const [isOpen, toggleOpen, closeCombobox] = useToggle(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
   const comboboxId = useId();
 
   // Gérer les transitions d'animation
@@ -41,8 +41,8 @@ export function Combobox() {
   }, [isOpen, shouldRender]);
 
   const handleClose = useCallback(() => {
-    setIsOpen(false);
-  }, [setIsOpen]);
+    closeCombobox();
+  }, [closeCombobox]);
 
   const handleSelect = useCallback(
     (option: (typeof options)[0]) => {
@@ -87,7 +87,7 @@ export function Combobox() {
         ref={buttonRef}
         className={classNames(styles.Combobox)}
         variant="neutre"
-        onClick={setIsOpen}
+        onClick={toggleOpen}
         type="button"
         role="combobox"
         aria-expanded={isOpen}
@@ -116,7 +116,7 @@ export function Combobox() {
 
 interface DropdownListProps {
   id: string;
-  parentRef: React.RefObject<HTMLButtonElement>;
+  parentRef: React.RefObject<HTMLButtonElement | null>;
   options: typeof options;
   onSelect: (option: (typeof options)[0]) => void;
   onClose: () => void;
@@ -136,32 +136,45 @@ function DropdownList({
   useEffect(() => {
     if (!parentRef.current || !listRef.current) return;
 
-    const parent = parentRef.current;
-    const list = listRef.current;
-    const parentRect = parent.getBoundingClientRect();
+    const positionList = () => {
+      const parent = parentRef.current;
+      const list = listRef.current;
 
-    // Position par défaut : sous le bouton
-    let top = parentRect.bottom + 4;
-    let left = parentRect.left;
+      if (!parent || !list) return;
 
-    // Vérifier si ça dépasse en bas
-    if (top + list.offsetHeight > window.innerHeight) {
-      top = parentRect.top - list.offsetHeight - 4;
-    }
+      const parentRect = parent.getBoundingClientRect();
 
-    // Vérifier si ça dépasse à droite
-    if (left + list.offsetWidth > window.innerWidth) {
-      left = window.innerWidth - list.offsetWidth - 8;
-    }
+      // Position par défaut : sous le bouton
+      let top = parentRect.bottom + 4;
+      let left = parentRect.left;
 
-    // Vérifier si ça dépasse à gauche
-    if (left < 8) {
-      left = 8;
-    }
+      // Vérifier si ça dépasse en bas
+      if (top + list.offsetHeight > window.innerHeight) {
+        top = parentRect.top - list.offsetHeight - 4;
+      }
 
-    list.style.top = `${top + window.scrollY}px`;
-    list.style.left = `${left + window.scrollX}px`;
-    list.style.minWidth = `${parent.offsetWidth}px`;
+      if (left + list.offsetWidth > window.innerWidth) {
+        left = window.innerWidth - list.offsetWidth - 8;
+      }
+
+      if (left < 8) {
+        left = 8;
+      }
+
+      list.style.top = `${top + window.scrollY}px`;
+      list.style.left = `${left + window.scrollX}px`;
+      list.style.minWidth = `${parent.offsetWidth}px`;
+    };
+
+    positionList();
+
+    window.addEventListener("resize", positionList);
+    window.addEventListener("scroll", positionList);
+
+    return () => {
+      window.removeEventListener("resize", positionList);
+      window.removeEventListener("scroll", positionList);
+    };
   }, [parentRef]);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -199,13 +212,17 @@ function DropdownList({
       ref={listRef}
       id={id}
       role="listbox"
-      className={classNames(styles.dropdown)}
       onKeyDown={handleKeyDown}
       style={{
         position: "absolute",
+        background: "#2b2d32",
+        border: "1px solid #444",
+        borderRadius: "4px",
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
         zIndex: 1000,
         maxHeight: "200px",
         overflowY: "auto",
+        // Animation CSS
         opacity: isAnimating ? 1 : 0,
         transform: isAnimating
           ? "translateY(0) scale(1)"
@@ -219,10 +236,18 @@ function DropdownList({
           key={option.id}
           role="option"
           tabIndex={0}
-          onClick={() => onSelect(option)}
+          onClick={(e) => {
+            e.stopPropagation(); // Empêche la propagation
+            e.preventDefault(); // Empêche les comportements par défaut
+            onSelect(option);
+          }}
+          onMouseDown={(e) => {
+            e.stopPropagation(); // Aussi sur mouseDown pour être sûr
+          }}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               e.preventDefault();
+              e.stopPropagation();
               onSelect(option);
             }
           }}
@@ -233,10 +258,11 @@ function DropdownList({
             borderBottom:
               index < options.length - 1 ? "1px solid #444" : "none",
             transition: "background-color 0.15s ease",
+            userSelect: "none", // Empêche la sélection de texte
           }}
           onMouseEnter={(e) => {
             e.currentTarget.focus();
-            e.currentTarget.style.backgroundColor = "var(--list-bg-hover)";
+            e.currentTarget.style.backgroundColor = "#3a3d42";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.backgroundColor = "transparent";

@@ -1,6 +1,11 @@
 import type React from "react";
 import styles from "./Button.module.css";
-import type { ButtonHTMLAttributes, PropsWithChildren, ReactNode } from "react";
+import type {
+  ButtonHTMLAttributes,
+  PropsWithChildren,
+  ReactNode,
+  RefObject,
+} from "react";
 import { classNames } from "../../../utils/dom.ts";
 
 export const buttonVariants = [
@@ -29,9 +34,11 @@ type ButtonProps = PropsWithChildren<
   size?: SizeProps;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   icon?: ReactNode;
+  ref?: RefObject<HTMLButtonElement | null>;
 };
 
 export function Button({
+  ref,
   children,
   onClick,
   variant = "secondary",
@@ -47,6 +54,7 @@ export function Button({
   const sizeClass = styles[size] ?? "";
   return (
     <button
+      ref={ref}
       disabled={variant === "loading"}
       onClick={onClick}
       className={classNames(styles.button, variantClass, sizeClass, className)}
