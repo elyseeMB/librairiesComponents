@@ -1,0 +1,15 @@
+button.neutre {
+  color: var(--button-secondary-color);
+  background: var(--button-secondary);
+}
+
+button.neutre:hover {
+  box-shadow: var(--shadow-s);
+  color: var(--button-ghost-color-hover);
+}
+
+button.neutre:disabled {
+  color: var(--button-secondary-color-disabled);
+  background: var(--button-secondary-disabled);
+  box-shadow: var(--secondary-button-disabled);
+}

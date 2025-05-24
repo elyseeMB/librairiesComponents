@@ -7,6 +7,7 @@ export const IconName = [
   "HomeLine",
   "MailLine",
   "SpinnerLine",
+  "ExpandUpDownLine",
 ] as const;
 
 export type PropsIconName = (typeof IconName)[number];
@@ -60,6 +61,10 @@ export function IconSymbols() {
 
       <symbol id="SpinnerLine">
         <path d="M18.364 5.63604L16.9497 7.05025C15.683 5.7835 13.933 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12H21C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C14.4853 3 16.7353 4.00736 18.364 5.63604Z"></path>
+      </symbol>
+
+      <symbol id="ExpandUpDownLine">
+        <path d="M18.2072 9.0428 12.0001 2.83569 5.793 9.0428 7.20721 10.457 12.0001 5.66412 16.793 10.457 18.2072 9.0428ZM5.79285 14.9572 12 21.1643 18.2071 14.9572 16.7928 13.543 12 18.3359 7.20706 13.543 5.79285 14.9572Z"></path>
       </symbol>
     </svg>
   );

@@ -1,0 +1,15 @@
+.Combobox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: max-content;
+  height: 2rem;
+}
+
+.dropdown {
+  border-radius: 8px;
+  box-shadow: var(--shadow-m);
+  background-color: var(--card-elevation-bg);
+}

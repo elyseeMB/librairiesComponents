@@ -9,6 +9,7 @@
 @import "./css/modules/Button_link.css";
 @import "./css/modules/Button_with_icon.css";
 @import "./css/modules/Button_loading.css";
+@import "./css/modules/Button_neutre.css";
 
 body[data-theme="dark"],
 button,

@@ -1,5 +1,6 @@
 import { Button } from "./stories/atoms/button/Button.tsx";
 import { Icon } from "./stories/atoms/icon/Icon.tsx";
+import { Combobox } from "./stories/molecules/combobox/Combobox.tsx";
 
 const label = {
   button: "Default +",
@@ -50,6 +51,9 @@ export function Presentation() {
           </div>
           <div className="hstack">
             <Button size="small" children={label.button} />
+          </div>
+          <div className="hstack">
+            <Combobox />
           </div>
         </div>
       </div>

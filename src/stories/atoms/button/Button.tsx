@@ -13,7 +13,7 @@ export const buttonVariants = [
   "icon",
   "with-icon",
   "loading",
-  "as-child",
+  "neutre",
 ] as const;
 
 type ButtonVariant = (typeof buttonVariants)[number];
