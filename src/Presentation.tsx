@@ -1,7 +1,19 @@
+import { useRef } from "react";
 import { Button } from "./stories/atoms/button/Button.tsx";
 import { Icon, IconSymbols } from "./stories/atoms/icon/Icon.tsx";
 import { Tooltip } from "./stories/molecules/Tooltip/Tooltip.tsx";
+import {
+  TooltipContextProvider,
+  useTooltip,
+} from "./stories/molecules/Tooltip/TooltipContext.tsx";
 import { Combobox } from "./stories/molecules/combobox/Combobox.tsx";
+import * as Form from "./components/Form.tsx";
+import {
+  ToastContextProvider,
+  useToast,
+} from "./stories/molecules/toast/useToast.tsx";
+import { DialogConfirm } from "./stories/molecules/DialogConfirm/DialogConfirm.tsx";
+import { Toaster, toast } from "sonner";
 
 const label = {
   button: "Default +",
@@ -10,14 +22,31 @@ const label = {
 export function App() {
   return (
     <div className="page-wrapper">
-      <div className="container">
-        <Presentation />
-      </div>
+      <ToastContextProvider>
+        <TooltipContextProvider>
+          <div className="container">
+            <Presentation />
+            <Toaster />
+          </div>
+        </TooltipContextProvider>
+      </ToastContextProvider>
     </div>
   );
 }
 
 export function Presentation() {
+  const ref = useRef(null);
+  const { show } = useTooltip(ref);
+  const { pushToast } = useToast();
+
+  const handleToast = () => {
+    pushToast({
+      title: "je suis le Toast",
+      content: "je suis le content",
+      duration: 2000,
+    });
+  };
+
   return (
     <>
       <div>
@@ -70,7 +99,7 @@ export function Presentation() {
           <div className="block">
             <h1>Combobox</h1>
             <div className="hstack">
-              <Combobox />
+              <Combobox info="je suis le message" />
             </div>
           </div>
           <hr />
@@ -82,6 +111,44 @@ export function Presentation() {
             </div>
           </div>
           <hr />
+          <div className="block">
+            <h1>Tooltip - Context</h1>
+            <div className="hstack">
+              <Button
+                ref={ref}
+                onMouseEnter={(e) => {
+                  console.log("Button tooltip triggered", e);
+                  show({
+                    message:
+                      "like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+                  });
+                }}
+                children="tooltip-context"
+              />
+            </div>
+          </div>
+          <hr />
+          <div className="block">
+            <h1>Tooltip - Context</h1>
+            <div className="hstack">
+              <Button onClick={handleToast} children="Toast" />
+              <Button
+                onClick={() =>
+                  toast("je suis le title", {
+                    closeButton: true,
+                  })
+                }
+                children="sonner toast"
+              />
+            </div>
+          </div>
+          <hr />
+          <div className="block">
+            <h1>Confirm Dialog</h1>
+            <div className="hstack">
+              <DialogConfirm open={false} />
+            </div>
+          </div>
         </div>
       </div>
     </>

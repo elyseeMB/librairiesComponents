@@ -52,6 +52,7 @@ export function Button({
   }
   const variantClass = styles[variant] ?? "";
   const sizeClass = styles[size] ?? "";
+
   return (
     <button
       ref={ref}

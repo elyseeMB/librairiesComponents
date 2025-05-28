@@ -4,6 +4,7 @@ import { classNames } from "../../../utils/dom.ts";
 import { useToggle } from "../../../hooks/useToggle.ts";
 import { createPortal } from "react-dom";
 import { useEffect, useRef, useCallback, useState, useId } from "react";
+import { useTooltip } from "../Tooltip/TooltipContext.tsx";
 
 const options = [
   { id: "1", name: "React" },
@@ -13,13 +14,14 @@ const options = [
 
 const ANIMATION_DURATION = 300; // ms
 
-export function Combobox() {
+export function Combobox({ info }: { info?: string }) {
   const [isOpen, toggleOpen, closeCombobox] = useToggle(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const comboboxId = useId();
+  const { show } = useTooltip(buttonRef);
 
   // Gérer les transitions d'animation
   useEffect(() => {
@@ -81,6 +83,15 @@ export function Combobox() {
     };
   }, [isOpen, handleClose]);
 
+  const handleTooltip = useCallback(() => {
+    if (!info) {
+      return;
+    }
+    show({
+      message: info,
+    });
+  }, [show, info]);
+
   return (
     <>
       <Button
@@ -88,6 +99,7 @@ export function Combobox() {
         className={classNames(styles.Combobox)}
         variant="neutre"
         onClick={toggleOpen}
+        onMouseEnter={handleTooltip}
         type="button"
         role="combobox"
         aria-expanded={isOpen}

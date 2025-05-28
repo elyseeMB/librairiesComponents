@@ -1,0 +1,12 @@
+.card {
+  color: var(--button-secondary-color);
+  border-radius: 4px;
+  padding: 1rem;
+  transition: all 0.3s;
+  background: var(--card-gray-bg);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-s);
+  background: var(--card-elevation-bg);
+}

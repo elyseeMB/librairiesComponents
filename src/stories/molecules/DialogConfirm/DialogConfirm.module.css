@@ -1,0 +1,40 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+}
+
+body:has(.wrapper) {
+  overflow: hidden;
+}
+
+.confirmDialog {
+  background-color: var(--card-elevation-bg);
+  box-shadow: var(--toast);
+  padding: 1rem;
+  border-radius: var(--rounded);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  min-width: 400px;
+}
+
+.info h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: right;
+  gap: 1rem;
+}

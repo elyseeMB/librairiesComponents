@@ -5,6 +5,7 @@
 
 /* MODULES */
 @import "./css/modules/presentation.css";
+@import "./css/modules/card.css";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
