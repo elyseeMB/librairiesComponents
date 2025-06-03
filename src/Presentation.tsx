@@ -2,7 +2,10 @@ import { useRef } from "react";
 import { Button } from "./stories/atoms/button/Button.tsx";
 import { Icon } from "./stories/atoms/icon/Icon.tsx";
 import { Tooltip } from "./stories/molecules/Tooltip/Tooltip.tsx";
-import { useTooltip } from "./stories/molecules/Tooltip/TooltipContext.tsx";
+import {
+  TooltipContextProvider,
+  useTooltip,
+} from "./stories/molecules/Tooltip/TooltipContext.tsx";
 import { Combobox } from "./stories/molecules/combobox/Combobox.tsx";
 import { Toasts, useToast } from "./stories/molecules/toast/useToast.tsx";
 import { Dialog } from "./stories/molecules/DialogConfirm/Dialog.tsx";
@@ -19,9 +22,11 @@ export function App() {
   return (
     <div className="page-wrapper">
       <div className="container">
-        <Presentation />
-        <Toasts />
-        <ConfirmDialog />
+        <TooltipContextProvider>
+          <Presentation />
+          <Toasts />
+          <ConfirmDialog />
+        </TooltipContextProvider>
       </div>
     </div>
   );
