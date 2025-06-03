@@ -8,7 +8,6 @@ import {
 } from "./stories/molecules/Tooltip/TooltipContext.tsx";
 import { Combobox } from "./stories/molecules/combobox/Combobox.tsx";
 import { Toasts, useToast } from "./stories/molecules/toast/useToast.tsx";
-import { Dialog } from "./stories/molecules/DialogConfirm/Dialog.tsx";
 import {
   ConfirmDialog,
   useConfirm,
