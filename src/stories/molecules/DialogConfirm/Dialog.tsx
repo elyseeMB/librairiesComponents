@@ -1,23 +1,23 @@
-import { useState } from "react";
 import { classNames } from "../../../utils/dom.ts";
 import { Button } from "../../atoms/button/Button.tsx";
 import styles from "./DialogConfirm.module.css";
+import { Icon } from "../../atoms/icon/Icon.tsx";
 
-export function DialogConfirm({
+export function Dialog({
   onCancel,
   onConfirm,
+  loading,
   open: OpenModal = false,
 }: {
   onCancel?: () => void;
   onConfirm?: () => void;
-  open: Boolean;
+  open: boolean;
+  loading?: boolean | undefined;
 }) {
-  const [open, setOpen] = useState(OpenModal);
-
-  
+  console.log(loading);
   return (
     <>
-      {open && (
+      {OpenModal && (
         <div className={classNames(styles.wrapper)}>
           <div className={classNames(styles.confirmDialog)}>
             <div className={classNames(styles.info)}>
@@ -29,10 +29,19 @@ export function DialogConfirm({
               </div>
             </div>
             <div className={classNames(styles.actions)}>
-              <Button onClick={() => onCancel} variant="destructive">
+              <Button
+                disabled={loading}
+                onClick={onCancel}
+                variant="destructive"
+              >
                 annulé
               </Button>
-              <Button onClick={() => onConfirm} variant="secondary">
+              <Button
+                disabled={loading}
+                onClick={onConfirm}
+                variant={loading ? "loading" : "secondary"}
+              >
+                {loading && <Icon name="SpinnerLine" />}
                 confirmé
               </Button>
             </div>

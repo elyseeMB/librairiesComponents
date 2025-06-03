@@ -1,19 +1,15 @@
 import { useRef } from "react";
 import { Button } from "./stories/atoms/button/Button.tsx";
-import { Icon, IconSymbols } from "./stories/atoms/icon/Icon.tsx";
+import { Icon } from "./stories/atoms/icon/Icon.tsx";
 import { Tooltip } from "./stories/molecules/Tooltip/Tooltip.tsx";
-import {
-  TooltipContextProvider,
-  useTooltip,
-} from "./stories/molecules/Tooltip/TooltipContext.tsx";
+import { useTooltip } from "./stories/molecules/Tooltip/TooltipContext.tsx";
 import { Combobox } from "./stories/molecules/combobox/Combobox.tsx";
-import * as Form from "./components/Form.tsx";
+import { Toasts, useToast } from "./stories/molecules/toast/useToast.tsx";
+import { Dialog } from "./stories/molecules/DialogConfirm/Dialog.tsx";
 import {
-  ToastContextProvider,
-  useToast,
-} from "./stories/molecules/toast/useToast.tsx";
-import { DialogConfirm } from "./stories/molecules/DialogConfirm/DialogConfirm.tsx";
-import { Toaster, toast } from "sonner";
+  ConfirmDialog,
+  useConfirm,
+} from "./stories/molecules/DialogConfirm/ConfirmDialog.tsx";
 
 const label = {
   button: "Default +",
@@ -22,14 +18,11 @@ const label = {
 export function App() {
   return (
     <div className="page-wrapper">
-      <ToastContextProvider>
-        <TooltipContextProvider>
-          <div className="container">
-            <Presentation />
-            <Toaster />
-          </div>
-        </TooltipContextProvider>
-      </ToastContextProvider>
+      <div className="container">
+        <Presentation />
+        <Toasts />
+        <ConfirmDialog />
+      </div>
     </div>
   );
 }
@@ -37,14 +30,29 @@ export function App() {
 export function Presentation() {
   const ref = useRef(null);
   const { show } = useTooltip(ref);
-  const { pushToast } = useToast();
+  const { toast } = useToast();
+  const confirm = useConfirm();
 
   const handleToast = () => {
-    pushToast({
+    toast({
       title: "je suis le Toast",
       content: "je suis le content",
-      duration: 2000,
     });
+  };
+
+  const handleConfirm = () => {
+    confirm(
+      () =>
+        new Promise<void>((resolve) => {
+          setTimeout(() => {
+            document.body.style.background = "gray";
+            window.requestAnimationFrame(() => resolve());
+          }, 3000);
+        }),
+      {
+        message: "je suis le message",
+      }
+    );
   };
 
   return (
@@ -132,21 +140,13 @@ export function Presentation() {
             <h1>Tooltip - Context</h1>
             <div className="hstack">
               <Button onClick={handleToast} children="Toast" />
-              <Button
-                onClick={() =>
-                  toast("je suis le title", {
-                    closeButton: true,
-                  })
-                }
-                children="sonner toast"
-              />
             </div>
           </div>
           <hr />
           <div className="block">
             <h1>Confirm Dialog</h1>
             <div className="hstack">
-              <DialogConfirm open={false} />
+              <Button children="Dialog" onClick={handleConfirm} />
             </div>
           </div>
         </div>
