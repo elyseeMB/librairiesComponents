@@ -23,6 +23,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
+//@ts-ignore
 export const Default: Story = {
   parameters: {
     layout: "centered",
